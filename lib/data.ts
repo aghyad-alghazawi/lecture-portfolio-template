@@ -66,3 +66,10 @@ export const PROJECTS = [
     url: "https://github.com/yourusername/project4"
   }
 ]
+
+export const INFO = {
+  name: "Your Name",
+  title: "Your Title",
+  description: "A brief description about yourself.",
+  email: "your@email"
+}

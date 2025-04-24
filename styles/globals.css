@@ -70,7 +70,7 @@ footer {
 
 header {
   background-color: transparent;
-  background: radial-gradient(
+  background-image: radial-gradient(
     circle,
     transparent 0%,
     transparent 30%,
