@@ -1,0 +1,245 @@
+:root {
+  --color-primary: #3b82f6;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-bg: #eff1f5;
+  --color-text: #4c4f69;
+  --color-card: #ffffff;
+  --color-muted: #dce0e8;
+
+  --font-size-lg: 2.5rem;
+  --font-size-md: 1.5rem;
+  --font-size-sm: 1rem;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #181825;
+    --color-text: #cdd6f4;
+    --color-muted: #464d6d;
+    --color-card: #1e1e2e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: all 0.2s ease;
+}
+
+html {
+  position: relative;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden; 
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--roboto);
+
+  height: 100vh;
+  overflow-y: scroll; 
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  h1,
+  h2 {
+    font-family: var(--roboto-mono);
+  }
+}
+
+header, footer {
+  max-width: 60vw;
+  z-index: 10;
+}
+
+
+header {
+  background-color: transparent;
+  background: radial-gradient(circle, 
+    transparent 0%,
+    transparent 30%,
+    var(--color-card) 60%,
+    var(--color-card) 100%
+  );  
+  background-blend-mode: overlay;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+
+  box-shadow: 0px 10px 20px -10px var(--color-primary);
+
+  color: var(--color-primary);
+
+  position: fixed;
+  inset: auto 0;
+  margin: 0 auto;
+  top: 10px;
+
+  border-radius: var(--radius);
+  width: 60vw;
+  padding: var(--spacing-sm) var(--spacing-lg);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    display: content;
+
+    & a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:hover {
+      filter: drop-shadow(0 0 4px var(--color-primary));
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: var(--spacing-md);
+    position: relative;
+  }
+
+  nav [data-slot="nav-link"] {
+    color: var(--color-primary);
+    opacity: 0.7;
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+    z-index: 1;
+  }
+
+  nav:has([data-slot="nav-link"]:hover) [data-slot="nav-link"]:not(:hover) {
+    opacity: 0.4;
+    filter: none;
+  }
+
+  nav:has([data-slot="nav-link"]:hover) [data-slot="nav-link"]:hover,
+  nav [data-slot="nav-link"][data-active="true"] {
+    opacity: 1;
+    color: var(--color-primary);
+    filter: drop-shadow(0 0 4px var(--color-primary));
+  }
+
+  nav [data-slot="nav-link"][data-active="true"]::after {
+    content: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    opacity: 0.7;
+    z-index: 0;
+  }
+}
+
+main {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: var(--spacing-lg);
+    height: 100vh;
+    width: 100%;
+    max-width: 60vw;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    flex-shrink: 0;
+  }
+}
+
+footer {
+  background-color: var(--color-card);
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-primary);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: var(--spacing-md) 0;
+  margin: 0 auto;
+  inset: auto 0;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.02em;
+  text-align: center;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row;
+
+  small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+
+    span {
+      color: var(--color-primary);
+      filter: drop-shadow(0 0 4px var(--color-primary));
+    }
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+
+    &:last-child a {
+      color: var(--color-primary);
+      opacity: 1;
+      isolation: isolate;
+    }
+    
+    &:last-child:has(a:hover) a:not(:hover) {
+      opacity: 0.4;
+      filter: none;
+    }
+    
+    &:last-child:has(a:hover) a:hover {
+      opacity: 1;
+      color: var(--color-primary);
+      filter: drop-shadow(0 0 4px var(--color-primary));
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
