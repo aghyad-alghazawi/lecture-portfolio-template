@@ -1,15 +1,20 @@
-import React from 'react';
 import styles from "@/styles/modules/button.module.css"
-
+import type React from "react"
 
 interface ButtonProps extends React.ComponentProps<"button"> {
-  title: string;
-  variant?: "primary" | "success" | "error";
-  size?: "small" | "medium" | "large";
-  icon?: React.ComponentType<{ size?: number; color?: string }>;
+  title: string
+  variant?: "primary" | "success" | "error"
+  size?: "small" | "medium" | "large"
+  icon?: React.ComponentType<{ size?: number; color?: string }>
 }
 
-const Button = ({ title, icon: Icon, variant, size = "medium", ...props }: ButtonProps) => {
+const Button = ({
+  title,
+  icon: Icon,
+  variant,
+  size = "medium",
+  ...props
+}: ButtonProps) => {
   const buttonClassName = `${styles.button} ${variant ? styles[variant] : ""} ${styles[size]}`
 
   return (

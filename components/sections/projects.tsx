@@ -1,6 +1,6 @@
-import styles from "@/styles/modules/projects.module.css";
-import { PROJECTS } from "@/lib/data";
-import { Card } from "@/components/ui/card";
+import { Card } from "@/components/ui/card"
+import { PROJECTS } from "@/lib/data"
+import styles from "@/styles/modules/projects.module.css"
 
 const Projects = () => (
   <section id="projects">
@@ -11,6 +11,6 @@ const Projects = () => (
       ))}
     </div>
   </section>
-);
+)
 
-export { Projects };
+export { Projects }

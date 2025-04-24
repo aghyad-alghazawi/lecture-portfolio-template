@@ -1,19 +1,18 @@
-import { SOCIALS } from "@/lib/data";
-import { Facebook, Linkedin, Twitter, Mail } from "lucide-react";
+import { SOCIALS } from "@/lib/data"
+import { Facebook, Linkedin, Mail, Twitter } from "lucide-react"
 
 const iconMap: Record<string, React.ReactNode> = {
   github: <Facebook />,
   linkedin: <Linkedin />,
   twitter: <Twitter />,
-  mail: <Mail />,
-};
+  mail: <Mail />
+}
 
 const Footer = () => (
   <footer>
     <small>
       &copy; {new Date().getFullYear()}&nbsp;
-      <span>Your Name</span>. 
-      All rights reserved.
+      <span>Your Name</span>. All rights reserved.
     </small>
     <span>
       {SOCIALS.map(({ name, url, icon }) => (
@@ -30,6 +29,6 @@ const Footer = () => (
       ))}
     </span>
   </footer>
-);
+)
 
-export { Footer };
+export { Footer }

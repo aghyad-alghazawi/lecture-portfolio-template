@@ -1,4 +1,4 @@
-import styles from "@/styles/modules/contact.module.css";
+import styles from "@/styles/modules/contact.module.css"
 
 const Contact = () => (
   <section id="contact">
@@ -16,6 +16,6 @@ const Contact = () => (
       <button type="submit">Send</button>
     </form>
   </section>
-);
+)
 
-export { Contact };
+export { Contact }

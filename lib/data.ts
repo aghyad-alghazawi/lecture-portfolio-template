@@ -1,21 +1,21 @@
 export const LINKS = [
   {
     href: "#hero",
-    label: "Hero",
+    label: "Hero"
   },
   {
     href: "#about",
-    label: "About",
+    label: "About"
   },
   {
     href: "#projects",
-    label: "Projects",
+    label: "Projects"
   },
   {
     href: "#contact",
-    label: "Contact",
+    label: "Contact"
   }
-];
+]
 
 export const SOCIALS = [
   {
@@ -38,31 +38,31 @@ export const SOCIALS = [
     url: "mailto:your@email.com",
     icon: "mail"
   }
-];
+]
 
 export const PROJECTS = [
   {
     title: "Project 1",
     description: "Description of project 1.",
     thumbnail: "/images/project-thumbnail.png",
-    url: "https://github.com/yourusername/project1",
+    url: "https://github.com/yourusername/project1"
   },
   {
     title: "Project 2",
     description: "Description of project 2.",
     thumbnail: "/images/project-thumbnail.png",
-    url: "https://github.com/yourusername/project2",
+    url: "https://github.com/yourusername/project2"
   },
   {
     title: "Project 3",
     description: "Description of project 3.",
     thumbnail: "/images/project-thumbnail.png",
-    url: "https://github.com/yourusername/project3",
+    url: "https://github.com/yourusername/project3"
   },
   {
     title: "Project 4",
     description: "Description of project 4.",
     thumbnail: "/images/project-thumbnail.png",
-    url: "https://github.com/yourusername/project4",
-  },
-];
+    url: "https://github.com/yourusername/project4"
+  }
+]

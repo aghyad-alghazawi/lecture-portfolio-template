@@ -1,7 +1,7 @@
-import styles from "@/styles/modules/card.module.css"
-import Image from "next/image";
 import { Button } from "@/components/ui/button"
-import { type CardProps } from "@/lib/types"
+import type { CardProps } from "@/lib/types"
+import styles from "@/styles/modules/card.module.css"
+import Image from "next/image"
 
 const Card = ({ title, description, thumbnail, url }: CardProps) => {
   return (
@@ -11,7 +11,7 @@ const Card = ({ title, description, thumbnail, url }: CardProps) => {
         <Image src={thumbnail} alt={title} fill />
       </div>
       <p>{description}</p>
-      <a title="View Project" href={url} target="_blank">
+      <a title="View Project" href={url} target="_blank" rel="noreferrer">
         <Button title="View Project" variant="primary" size="small" />
       </a>
     </div>

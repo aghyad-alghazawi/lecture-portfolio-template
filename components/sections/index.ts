@@ -1,6 +1,6 @@
-import { Hero } from "@/components/sections/hero";
-import { About } from "@/components/sections/about";
-import { Projects } from "@/components/sections/projects";
-import { Contact } from "@/components/sections/contact";
+import { About } from "@/components/sections/about"
+import { Contact } from "@/components/sections/contact"
+import { Hero } from "@/components/sections/hero"
+import { Projects } from "@/components/sections/projects"
 
-export { Hero, About, Projects, Contact };
+export { Hero, About, Projects, Contact }
