@@ -28,7 +28,6 @@ const Header = () => {
       });
       setActive(currentSection);
       // Update the URL hash without reloading or scrolling
-      // if #hero != #about
       if (currentSection && window.location.hash !== currentSection) {
         history.replaceState(null, '', currentSection);
       }
