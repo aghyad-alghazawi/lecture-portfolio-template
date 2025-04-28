@@ -1,8 +1,19 @@
 .projects-grid {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
   place-content: center;
-  place-items: center;
+  place-items: stretch;
   margin: 0 auto;
+  width: 100%;
+  padding: var(--spacing-lg) 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title {
+  margin-top: 8rem;
+  font-size: var(--font-size-lg);
 }

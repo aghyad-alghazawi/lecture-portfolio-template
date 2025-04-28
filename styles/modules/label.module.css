@@ -1,0 +1,19 @@
+.label {
+  font-weight: 500;
+  color: var(--color-muted);
+  filter: brightness(1.5);
+  margin-top: var(--spacing-sm);
+  display: inline-block;
+}
+
+.small {
+  font-size: var(--font-size-sm);
+}
+
+.medium {
+  font-size: var(--font-size-md);
+}
+
+.large {
+  font-size: var(--font-size-lg);
+}

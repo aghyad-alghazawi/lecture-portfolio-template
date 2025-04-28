@@ -1,0 +1,111 @@
+.accordion {
+  border: none;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-block: var(--spacing-sm);
+  min-width: -webkit-fill-available;
+  width: 100%;
+  overflow: visible;
+  border-bottom: 1px solid var(--color-muted);
+
+  /* &:not(:last-child) {
+    border-bottom: 1px solid var(--color-muted);
+  } */
+
+  &[open] {
+    border-color: var(--color-primary);
+    box-shadow: none;
+  }
+}
+
+.summary {
+  cursor: pointer;
+  padding: var(--spacing-sm) 0;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  outline: none;
+  background: none;
+  color: var(--color-text);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  position: relative;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-primary);
+    text-decoration: underline;
+    background: none;
+  }
+  
+  &:active {
+    color: var(--color-primary);
+    background: none;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    margin-left: auto;
+    width: 1.1em;
+    height: 1.1em;
+    mask: url('data:image/svg+xml;utf8,<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>')
+      no-repeat center / contain;
+    background: currentColor;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.accordion[open] .summary::after {
+  transform: rotate(180deg);
+}
+
+.accordion[open] .summary {
+  color: var(--color-primary);
+}
+
+
+.content {
+  padding: var(--spacing-md) 0 var(--spacing-sm) 0;
+  border: none;
+  color: var(--color-text);
+  background: none;
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  will-change: height, opacity;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.accordion[open] .content {
+  height: auto;
+  max-height: 500px;
+  animation: expand 0.5s ease forwards;
+  opacity: 1;
+}
+
+@keyframes expand {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@keyframes collapse {
+  0% {
+    max-height: 500px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+  }
+}

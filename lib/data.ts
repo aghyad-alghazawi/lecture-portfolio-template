@@ -1,46 +1,48 @@
-export const LINKS = [
+import type { Link, Project } from "@/lib/types"
+
+export const NavLinks: Link[] = [
   {
-    href: "#hero",
-    label: "Hero"
+    label: "Home",
+    href: "#hero"
   },
   {
-    href: "#about",
-    label: "About"
+    label: "Projects",
+    href: "#projects"
   },
   {
-    href: "#projects",
-    label: "Projects"
+    label: "About",
+    href: "#about"
   },
   {
-    href: "#contact",
-    label: "Contact"
+    label: "Contact",
+    href: "#contact"
   }
 ]
 
-export const SOCIALS = [
+export const Socials: Link[] = [
   {
-    name: "GitHub",
-    url: "https://github.com/yourusername",
+    label: "GitHub",
+    href: "https://github.com/yourusername",
     icon: "github"
   },
   {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/yourusername",
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/yourusername",
     icon: "linkedin"
   },
   {
-    name: "Twitter",
-    url: "https://twitter.com/yourusername",
+    label: "Twitter",
+    href: "https://twitter.com/yourusername",
     icon: "twitter"
   },
   {
-    name: "Email",
-    url: "mailto:your@email.com",
+    label: "Email",
+    href: "mailto:your@email.com",
     icon: "mail"
   }
 ]
 
-export const PROJECTS = [
+export const Projects: Project[] = [
   {
     title: "Project 1",
     description: "Description of project 1.",
@@ -67,9 +69,29 @@ export const PROJECTS = [
   }
 ]
 
-export const INFO = {
+export const Info = {
   name: "Your Name",
   title: "Your Title",
   description: "A brief description about yourself.",
-  email: "your@email"
+  email: "your@email",
+  image: "/images/profile.png", 
+  bio: "I am a passionate developer with a love for building beautiful and functional web applications. With experience in React, Next.js, and modern web technologies, I enjoy turning ideas into reality.",
+  experience: [
+    {
+      title: "Frontend Developer",
+      details: "3+ years building responsive UIs with React, Next.js, and TypeScript."
+    },
+    {
+      title: "UI/UX Designer",
+      details: "Skilled in designing clean, modern interfaces and user experiences."
+    },
+    {
+      title: "Open Source Contributor",
+      details: "Contributor to several open source projects and active in the dev community."
+    },
+    {
+      title: "Skills",
+      details: "JavaScript, TypeScript, React, Next.js, CSS Modules, Figma, Git, REST APIs"
+    }
+  ]
 }

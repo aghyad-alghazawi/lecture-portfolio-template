@@ -1,0 +1,132 @@
+.blog {
+
+  & hr {
+    color: var(--color-primary);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 4px var(--color-primary));
+  }
+
+  & h1,
+  & h2,
+  & h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: var(--roboto-mono);
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  & h1 {
+    font-size: 2.5rem;
+  }
+  & h2 {
+    font-size: 2rem;
+  }
+  & h3 {
+    font-size: 1.5rem;
+  }
+
+  & p {
+    margin: 1.2rem 0;
+  }
+
+  & ul,
+  & ol {
+    margin: 1.5rem 0 1.5rem 2rem;
+    padding: 0;
+  }
+
+  & li {
+    margin-bottom: 0.75rem;
+  }
+
+  & code {
+    background: var(--color-muted);
+    color: var(--color-primary);
+    padding: 0.2em 0.5em;
+    border-radius: 0.3em;
+    font-size: 0.95em;
+    font-family: var(--roboto-mono, monospace);
+  }
+
+  & pre {
+    background: var(--color-muted);
+    color: var(--color-text);
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 1em;
+    font-family: var(--roboto-mono, monospace);
+  }
+
+  & blockquote {
+    border-left: 4px solid var(--color-primary);
+    background: rgba(59, 130, 246, 0.05);
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: 0.4em;
+    font-style: italic;
+    color: var(--color-primary);
+  }
+
+  & img {
+    display: block;
+    max-width: 100%;
+    margin: 2rem auto;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 12px 0 rgba(60, 60, 120, 0.1);
+  }
+
+  & a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  & a:hover {
+    color: var(--color-success);
+  }
+
+  & [data-slot="blog-meta"] {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    background: var(--color-card);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+
+  & [data-slot="blog-title"] {
+    font-size: 2.3rem;
+    font-family: var(--roboto-mono, monospace);
+    color: var(--color-primary);
+    margin: 0.5rem 0 0.5rem 0;
+    letter-spacing: 0.01em;
+  }
+
+  & [data-slot="blog-details"] {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  & [data-slot="blog-date"] {
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  & [data-slot="blog-author"] {
+    font-style: italic;
+    color: var(--color-success);
+  }
+
+  & [data-slot="blog-summary"] {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    margin: 0 auto 0.5rem auto;
+    max-width: 80%;
+    opacity: 0.9;
+  }
+}

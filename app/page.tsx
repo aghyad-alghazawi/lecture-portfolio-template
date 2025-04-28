@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <Hero />
-      <About />
       <Projects />
+      <About />
       <Contact />
     </main>
   )

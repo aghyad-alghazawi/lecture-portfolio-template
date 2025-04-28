@@ -1,8 +1,8 @@
-import { SOCIALS } from "@/lib/data"
-import { Facebook, Linkedin, Mail, Twitter } from "lucide-react"
+import { Socials } from "@/lib/data"
+import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 
 const iconMap: Record<string, React.ReactNode> = {
-  github: <Facebook />,
+  github: <Github />,
   linkedin: <Linkedin />,
   twitter: <Twitter />,
   mail: <Mail />
@@ -15,16 +15,16 @@ const Footer = () => (
       <span>Your Name</span>. All rights reserved.
     </small>
     <span>
-      {SOCIALS.map(({ name, url, icon }) => (
+      {Socials.map(({ label, href, icon }) => (
         <a
-          key={name}
-          href={url}
+          key={label}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={name}
+          aria-label={label}
           className="footer-social-link"
         >
-          {iconMap[icon]}
+          {icon && iconMap[icon]}
         </a>
       ))}
     </span>
