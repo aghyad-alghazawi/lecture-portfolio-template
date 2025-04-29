@@ -40,7 +40,7 @@
   }
 
   & code {
-    background: var(--color-muted);
+    background: var(--color-card);
     color: var(--color-primary);
     padding: 0.2em 0.5em;
     border-radius: 0.3em;
@@ -49,7 +49,7 @@
   }
 
   & pre {
-    background: var(--color-muted);
+    background: var(--color-card);
     color: var(--color-text);
     padding: 1em;
     border-radius: 0.5em;
@@ -89,13 +89,11 @@
   & [data-slot="blog-meta"] {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
-    background: var(--color-card);
-    border-radius: var(--radius);
     text-align: center;
   }
 
   & [data-slot="blog-title"] {
-    font-size: 2.3rem;
+    font-size: calc(var(--font-size-lg));
     font-family: var(--roboto-mono, monospace);
     color: var(--color-primary);
     margin: 0.5rem 0 0.5rem 0;
@@ -113,7 +111,7 @@
 
   & [data-slot="blog-date"] {
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--color-muted);
   }
 
   & [data-slot="blog-author"] {
@@ -147,6 +145,9 @@
       & h2 {
         filter: drop-shadow(0 0 4px var(--color-primary));
       }
+      & li {
+        box-shadow: 0 0 12px 0 var(--color-primary);
+      }
     }
 
     & li {
@@ -156,10 +157,12 @@
       place-items: center;
       gap: var(--spacing-lg);
       background: var(--color-card);
+
       border-radius: var(--radius);
       padding: var(--spacing-md);
       text-align: center;
       list-style-type: none;
+      width: 40vw;
 
       & h2 {
         color: var(--color-primary);

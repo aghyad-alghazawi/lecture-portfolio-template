@@ -1,5 +1,6 @@
 import styles from "@/styles/modules/blog.module.css"
 import { getSlugs } from "@/lib/utils"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default async function Slug({
   params
@@ -11,13 +12,20 @@ export default async function Slug({
     `@/content/${slug}.mdx`
   )
 
+  if (!Frontmatter) {
+    throw new Error("Missing frontmatter")
+  }
+
   return (
     <article className={styles.blog}>
+      <Breadcrumb
+        items={[{ label: "Blog", href: "/blog" }, { label: Frontmatter.title }]}
+      />
       <div data-slot="blog-meta">
         <h1 data-slot="blog-title">{Frontmatter.title}</h1>
         <div data-slot="blog-details">
-          <time data-slot="blog-date">{Frontmatter.date}</time>
           <span data-slot="blog-author">{Frontmatter.author}</span>
+          <time data-slot="blog-date">{Frontmatter.date}</time>
         </div>
         <p data-slot="blog-summary">{Frontmatter.summary}</p>
       </div>

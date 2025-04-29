@@ -1,0 +1,57 @@
+@property --x {
+  syntax: "<length-percentage>";
+  initial-value: 0%;
+}
+
+.blog-sort {
+  display: flex;
+  border-radius: var(--radius);
+  background-color: var(--color-card);
+  border: 2px solid var(--color-muted);
+  overflow: hidden;
+  position: relative;
+  padding: var(--spacing-sm);
+
+  &[data-sort="asc"] {
+    --x: calc(0% + var(--spacing-sm));
+  }
+
+  &[data-sort="desc"] {
+    --x: 50%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto;
+    margin: auto 0;
+    left: var(--x);
+    width: 40%;
+    aspect-ratio: 1;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+    z-index: 1;
+  }
+
+  & button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: transparent;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-muted);
+    }
+
+    & svg {
+      size: var(--font-size-sm);
+      z-index: 2;
+    }
+  }
+}
