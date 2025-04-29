@@ -1,0 +1,173 @@
+export const meta = {
+  title: "Next.js Tutorial",
+  author: "Stella",
+  date: "2025-04-28",
+  summary: "A comprehensive guide to Next.js.",
+}
+
+# Next.js
+
+**Next.js** is a modern React framework for building full-stack web applications. It offers powerful routing, server components, caching, and edge functions, with a focus on performance and developer experience.
+
+---
+
+## 1. Installation
+
+To create a Next.js project with Bun (or Node):
+
+### With Bun:
+```bash
+bun create next-app my-app
+cd my-app
+bun dev
+```
+
+### With npm/yarn/pnpm:
+```bash
+npx create-next-app@latest my-app
+cd my-app
+npm run dev
+```
+
+---
+
+## 2. Project Structure
+
+```
+my-app/
+├── app/              # App Router (recommended)
+│   └── page.tsx      # Entry point for the homepage
+├── components/       # Your React UI components
+├── public/           # Static files (e.g., images)
+├── styles/           # CSS/SCSS/Modules
+├── next.config.js    # Next.js config
+└── tsconfig.json     # TypeScript config (if using TS)
+```
+
+---
+
+## 3. Pages and Routing
+
+Next.js 15 uses the **App Router** by default:
+
+### `app/page.tsx`:
+```tsx
+export default function HomePage() {
+  return <h1>Hello from Next.js 15</h1>;
+}
+```
+
+To create nested routes, use folders:
+
+```
+app/
+├── page.tsx          -> /
+├── about/
+│   └── page.tsx      -> /about
+```
+
+---
+
+## 4. Linking Between Pages
+
+Use the built-in `Link` component:
+
+```tsx
+import Link from 'next/link';
+
+<Link href="/about">About</Link>
+```
+
+---
+
+## 5. Styling
+
+You can use:
+- **CSS Modules**
+- **Tailwind CSS**
+- **Global styles (app/globals.css)**
+
+### Example (CSS Module):
+```tsx
+import styles from './Home.module.css';
+
+export default function Page() {
+  return <h1 className={styles.title}>Welcome</h1>;
+}
+```
+
+---
+
+## 6. Components
+
+Organize reusable UI elements in `/components`.
+
+### Example:
+```tsx
+// components/Button.tsx
+export default function Button({ text }: { text: string }) {
+  return <button>{text}</button>;
+}
+```
+
+Use it in a page:
+```tsx
+import Button from '../components/Button';
+
+<Button text="Click me" />
+```
+
+---
+
+## 7. Server Components vs Client Components
+
+By default, components are server-rendered.
+
+Add `'use client'` at the top to make it interactive:
+
+```tsx
+'use client';
+
+export default function Counter() {
+  // useState, useEffect here
+}
+```
+
+---
+
+## 8. API Routes (Edge and Route Handlers)
+
+Add API logic via `app/api`.
+
+### Example:
+```
+app/api/hello/route.ts
+```
+
+```ts
+export async function GET() {
+  return Response.json({ message: 'Hello API' });
+}
+```
+
+---
+
+## 9. Deployment
+
+Use [Vercel](https://vercel.com) for one-click deployment.
+
+Or build and run manually:
+```bash
+bun build
+bun start
+```
+
+---
+
+## 10. Tips
+
+- Use **Server Components** when possible (faster).
+- Use `Image` and `Link` for optimized performance.
+- Check the [Next.js 15 docs](https://nextjs.org/docs) for latest features.
+
+---

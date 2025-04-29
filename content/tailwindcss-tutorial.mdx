@@ -1,0 +1,113 @@
+export const meta = {
+  title: "Tailwind CSS Tutorial",
+  author: "Stella",
+  date: "2025-04-28",
+  summary: "A comprehensive guide to Tailwind CSS v4.",
+}
+
+# Tailwind CSS Tutorial
+
+**Tailwind CSS v4** is a significant update that brings performance improvements, modern CSS features, and a streamlined developer experience.
+
+---
+
+## 1. Installation
+
+Tailwind CSS v4 simplifies the installation process.
+
+### Using npm:
+```bash
+npm install tailwindcss @tailwindcss/postcss
+```
+
+### Configure PostCSS:
+```js
+// postcss.config.js
+export default {
+  plugins: ["@tailwindcss/postcss"],
+};
+```
+
+### Import Tailwind in your CSS:
+```css
+/* styles.css */
+@import "tailwindcss";
+```
+
+---
+
+## 2. Project Structure
+
+Tailwind CSS v4 encourages a CSS-first configuration approach.
+
+### Example:
+```css
+/* styles.css */
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Satoshi", "sans-serif";
+  --breakpoint-3xl: 1920px;
+}
+```
+
+---
+
+## 3. Performance Enhancements
+
+Tailwind CSS v4 introduces a new high-performance engine, resulting in:
+
+- Full builds up to 5x faster
+- Incremental builds over 100x faster
+- Reduced bundle size by more than 35%
+
+These improvements are achieved through a complete rewrite of the framework, leveraging Rust and Lightning CSS.
+
+---
+
+## 4. Modern CSS Features
+
+Tailwind CSS v4 embraces modern web standards:
+
+- **Native Cascade Layers**: Improved control over style rule interactions.
+- **Registered Custom Properties**: Enhanced animations and performance.
+- **`color-mix()`**: Simplified opacity adjustments.
+- **Container Queries**: Responsive designs without additional plugins.
+
+---
+
+## 5. New Utilities
+
+Tailwind CSS v4.1 introduces additional utilities:
+
+- **Text Shadows**: `text-shadow-*` utilities for enhanced text styling.
+- **Mask Utilities**: `mask-*` utilities for masking elements with images or gradients.
+- **Improved Browser Compatibility**: Graceful degradation for older browsers.
+
+---
+
+## 6. Automatic Content Detection
+
+Tailwind CSS v4 automatically detects content sources, eliminating the need for manual configuration of the `content` array.
+
+---
+
+## 7. Upgrading from Previous Versions
+
+To upgrade to Tailwind CSS v4:
+
+```bash
+npx @tailwindcss/upgrade@next
+```
+
+This command assists in migrating your project to the latest version.
+
+---
+
+## 8. Tips for Using Tailwind CSS v4
+
+- **CSS-First Configuration**: Define customizations directly in your CSS files using the `@theme` directive.
+- **Leverage New Utilities**: Utilize the latest utilities like `text-shadow-*` and `mask-*` for enhanced styling.
+- **Monitor Performance**: Take advantage of the improved build times for a more efficient development process.
+
+---

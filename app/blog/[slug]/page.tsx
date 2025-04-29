@@ -1,5 +1,5 @@
-import fs from "node:fs"
-import path from "node:path"
+import styles from "@/styles/modules/blog.module.css"
+import { getSlugs } from "@/lib/utils"
 
 export default async function Slug({
   params
@@ -7,18 +7,27 @@ export default async function Slug({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const { default: Post } = await import(`@/content/${slug}.mdx`)
+  const { default: Post, meta: Frontmatter } = await import(
+    `@/content/${slug}.mdx`
+  )
 
-  return <Post />
+  return (
+    <article className={styles.blog}>
+      <div data-slot="blog-meta">
+        <h1 data-slot="blog-title">{Frontmatter.title}</h1>
+        <div data-slot="blog-details">
+          <time data-slot="blog-date">{Frontmatter.date}</time>
+          <span data-slot="blog-author">{Frontmatter.author}</span>
+        </div>
+        <p data-slot="blog-summary">{Frontmatter.summary}</p>
+      </div>
+      <Post />
+    </article>
+  )
 }
 
-
-export function generateStaticParams() {
-  const contentDir = path.join(process.cwd(), "content")
-  const files = fs.readdirSync(contentDir)
-  return files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => ({ slug: file.replace(/\.mdx$/, "") }))
+export async function generateStaticParams() {
+  return getSlugs()
 }
 
 export const dynamicParams = false

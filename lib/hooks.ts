@@ -17,9 +17,17 @@ export function useSectionScroll() {
       const viewportCenter = window.innerHeight / 2
       // If not on home page, set active to pathname (e.g. /blog)
       if (pathname !== "/") {
-        setActive(pathname)
-        if (window.location.hash && window.location.hash !== pathname) {
-          history.replaceState(null, "", pathname)
+        // If on a blog subroute, set active to '/blog' for any /blog or /blog/*
+        if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+          setActive("/blog")
+          if (window.location.hash && window.location.hash !== "/blog") {
+            history.replaceState(null, "", "/blog")
+          }
+        } else {
+          setActive(pathname)
+          if (window.location.hash && window.location.hash !== pathname) {
+            history.replaceState(null, "", pathname)
+          }
         }
         return
       }

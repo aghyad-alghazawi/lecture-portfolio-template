@@ -6,18 +6,17 @@ const nextConfig: NextConfig = {
     mdxRs: true
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-
   turbopack: {
-    resolveExtensions: [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"],
-  },
+    resolveExtensions: [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+  }
 }
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
+    rehypePlugins: []
+  }
+})
 
 export default withMDX(nextConfig)

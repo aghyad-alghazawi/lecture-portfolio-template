@@ -42,7 +42,7 @@ const Header = () => {
         />
         <Link
           href="/blog"
-          data-active={active === "/blog" ? "true" : undefined}
+          data-active={active === "/blog" || active.startsWith("/blog/") ? "true" : undefined}
           data-slot="nav-link"
           onClick={() => {
             setActive("/blog")
