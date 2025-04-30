@@ -1,8 +1,36 @@
 import styles from "@/styles/modules/blog.module.css"
-import { getSlugs } from "@/lib/utils"
+import { getFrontmatter, getSlugs } from "@/lib/utils"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 
-export default async function Slug({
+import type { Metadata } from "next"
+
+export async function generateMetadata({
+  params
+}: { params: Promise<{ slug: string } > }) {
+  const { slug } = await params
+  const { frontmatter } = await getFrontmatter(slug)
+  const metadata: Metadata = {
+    title: `Blog | ${frontmatter.title}`,
+    description: frontmatter.summary,
+    openGraph: {
+      siteName: `Blog | ${frontmatter.title}`
+    }
+  }
+
+  // if (frontmatter.og_image)
+  //   metadata.openGraph!.images = [
+  //     {
+  //       url: frontmatter.og_image,
+  //       width: 1200,
+  //       height: 630,
+  //       alt: ""
+  //     }
+  //   ]
+
+  return metadata
+}
+
+export default async function Post({
   params
 }: {
   params: Promise<{ slug: string }>
