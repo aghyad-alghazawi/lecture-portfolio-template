@@ -19,7 +19,6 @@ export async function GET(request: Request) {
 
   return new ImageResponse(
     <div
-      data-og="true"
       style={{
         width: "100%",
         height: "100%",

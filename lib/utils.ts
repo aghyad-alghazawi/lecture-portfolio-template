@@ -20,7 +20,7 @@ export async function getFrontmatter(
 }
 
 // Get all blogs with frontmatter and slug
-let cachedBlogsPromise: Promise<
+let cachedBlogs: Promise<
   {
     frontmatter: Frontmatter
     slug: string
@@ -33,11 +33,11 @@ export async function getBlogs(): Promise<
     slug: string
   }[]
 > {
-  if (cachedBlogsPromise) {
-    return cachedBlogsPromise
+  if (cachedBlogs) {
+    return cachedBlogs
   }
 
-  cachedBlogsPromise = (async () => {
+  cachedBlogs = (async () => {
     const files = await fs.promises.readdir(CONTENT_DIR)
 
     if (!files.length) throw new Error("No blogs found")
@@ -55,11 +55,11 @@ export async function getBlogs(): Promise<
       throw new Error("Missing frontmatter")
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 5000))
+    await new Promise((resolve) => setTimeout(resolve, 3000))
     return blogs
   })()
 
-  return cachedBlogsPromise
+  return cachedBlogs
 }
 
 // Get all slugs

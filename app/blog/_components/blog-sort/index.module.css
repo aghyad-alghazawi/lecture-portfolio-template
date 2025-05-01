@@ -23,7 +23,7 @@
   &::before {
     content: "";
     position: absolute;
-    inset: 0 auto;
+    inset: 0;
     margin: auto 0;
     left: var(--x);
     width: 40%;
