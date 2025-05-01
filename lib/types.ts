@@ -16,4 +16,5 @@ export type Frontmatter = {
   date?: string
   author?: string
   summary?: string
+  image?: string
 }

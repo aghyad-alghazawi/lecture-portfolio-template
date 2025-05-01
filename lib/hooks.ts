@@ -8,29 +8,27 @@ import { useRouter, usePathname } from "next/navigation"
  */
 export function useSectionScroll() {
   const [active, setActive] = useState<string>("")
-  const pathname = typeof window !== "undefined" ? window.location.pathname : ""
+  const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
       let currentSection = ""
       let minDistance = Number.POSITIVE_INFINITY
       const viewportCenter = window.innerHeight / 2
+      
       // If not on home page, set active to pathname (e.g. /blog)
       if (pathname !== "/") {
         // If on a blog subroute, set active to '/blog' for any /blog or /blog/*
         if (pathname === "/blog" || pathname.startsWith("/blog/")) {
           setActive("/blog")
-          if (window.location.hash && window.location.hash !== "/blog") {
-            history.replaceState(null, "", "/blog")
-          }
-        } else {
-          setActive(pathname)
-          if (window.location.hash && window.location.hash !== pathname) {
-            history.replaceState(null, "", pathname)
-          }
+          return
         }
+        setActive(pathname)
         return
       }
+
+      // Check sections on home page
       NavLinks.forEach((link) => {
         const id = link.href.replace("#", "")
         const section = document.getElementById(id)
@@ -45,9 +43,6 @@ export function useSectionScroll() {
         }
       })
       setActive(currentSection)
-      if (currentSection && window.location.hash !== currentSection) {
-        history.replaceState(null, "", currentSection)
-      }
     }
 
     document.body.addEventListener("scroll", handleScroll)
@@ -62,36 +57,51 @@ export function useSectionScroll() {
 
 // Custom hook for section navigation with blog redirect logic
 export function useNavSection() {
-  const router = useRouter();
-  const pathname = usePathname();
+  const router = useRouter()
+  const pathname = usePathname()
 
   function navToSection(href: string) {
     if (pathname.startsWith("/blog")) {
       // Go to home, then scroll after navigation
-      router.push("/");
-      // Wait for navigation, then scroll
+      router.push("/")
+      // Wait for navigation to complete
       setTimeout(() => {
-        const id = href.replace("#", "");
-        const el = document.getElementById(id);
+        const id = href.replace("#", "")
+        const el = document.getElementById(id)
         if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+          // Scroll to element with a small offset to ensure it's fully visible
+          el.scrollIntoView({ 
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest"
+          })
         } else {
-          // In case element not found immediately, try again shortly
+          // Try again after a short delay
           setTimeout(() => {
-            const el2 = document.getElementById(id);
-            if (el2) el2.scrollIntoView({ behavior: "smooth" });
-          }, 300);
+            const el2 = document.getElementById(id)
+            if (el2) {
+              el2.scrollIntoView({ 
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest"
+              })
+            }
+          }, 200)
         }
-      }, 500);
+      }, 300) // Reduced timeout for faster navigation
     } else {
       // Already on home, just scroll
-      const id = href.replace("#", "");
-      const el = document.getElementById(id);
+      const id = href.replace("#", "")
+      const el = document.getElementById(id)
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        el.scrollIntoView({ 
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest"
+        })
       }
     }
   }
 
-  return navToSection;
+  return navToSection
 }

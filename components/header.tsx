@@ -9,6 +9,11 @@ const Header = () => {
   const [active, setActive] = useSectionScroll()
   const navToSection = useNavSection()
 
+  const handleNavLinkClick = (href: string) => {
+    navToSection(href)
+    setActive(href)
+  }
+
   return (
     <header>
       <span>
@@ -18,19 +23,18 @@ const Header = () => {
       </span>
       <nav>
         {NavLinks.map((link) => (
-          <a
+          <Link
             key={link.label}
             href={link.href}
             data-active={active === link.href ? "true" : undefined}
             data-slot="nav-link"
             onClick={(e) => {
               e.preventDefault()
-              navToSection(link.href)
-              setActive(link.href)
+              handleNavLinkClick(link.href)
             }}
           >
             {link.label}
-          </a>
+          </Link>
         ))}
         <hr
           style={{
@@ -42,10 +46,10 @@ const Header = () => {
         />
         <Link
           href="/blog"
-          data-active={active === "/blog" || active.startsWith("/blog/") ? "true" : undefined}
+          data-active={active === "/blog" ? "true" : undefined}
           data-slot="nav-link"
           onClick={() => {
-            setActive("/blog")
+            handleNavLinkClick("/blog")
           }}
         >
           Blog

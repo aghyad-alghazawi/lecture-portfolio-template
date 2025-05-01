@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ffflurry-grad" gradientTransform="rotate(270)">
+      <stop stop-color="#181825" stop-opacity="1" offset="0%"></stop>
+      <stop stop-color="#3b82f6" stop-opacity="1" offset="45%"></stop>
+      <stop stop-color="#1e1e2e" stop-opacity="1" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#181825"></rect>
+  <g fill="url(#ffflurry-grad)">
+    <rect width="528" height="4" x="428" y="708" rx="2" transform="rotate(14, 692, 710)" opacity="0.31"></rect>
+    <rect width="779" height="4" x="-274.5" y="119" rx="2" transform="rotate(14, 115, 121)" opacity="0.63"></rect>
+    <rect width="470" height="4" x="162" y="707" rx="2" transform="rotate(14, 397, 709)" opacity="0.18"></rect>
+    <rect width="929" height="4" x="-118.5" y="475" rx="2" transform="rotate(14, 346, 477)" opacity="0.44"></rect>
+    <rect width="845" height="4" x="196.5" y="132" rx="2" transform="rotate(14, 619, 134)" opacity="0.38"></rect>
+    <rect width="370" height="4" x="17" y="682" rx="2" transform="rotate(14, 202, 684)" opacity="0.59"></rect>
+    <rect width="645" height="4" x="331.5" y="401" rx="2" transform="rotate(14, 654, 403)" opacity="0.56"></rect>
+    <rect width="751" height="4" x="-43.5" y="196" rx="2" transform="rotate(14, 332, 198)" opacity="0.68"></rect>
+    <rect width="345" height="4" x="-112.5" y="669" rx="2" transform="rotate(14, 60, 671)" opacity="0.47"></rect>
+    <rect width="557" height="4" x="291.5" y="597" rx="2" transform="rotate(14, 570, 599)" opacity="0.33"></rect>
+    <rect width="715" height="4" x="-250.5" y="409" rx="2" transform="rotate(14, 107, 411)" opacity="0.70"></rect>
+  </g>
+</svg>

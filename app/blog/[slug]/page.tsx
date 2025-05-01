@@ -6,26 +6,40 @@ import type { Metadata } from "next"
 
 export async function generateMetadata({
   params
-}: { params: Promise<{ slug: string } > }) {
+}: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const { frontmatter } = await getFrontmatter(slug)
+
+  const { title, date, summary, author, image } = frontmatter
+  const ogImage = image
+    ? image
+    : `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${encodeURIComponent(title ?? "Blog")}`
+
   const metadata: Metadata = {
-    title: `Blog | ${frontmatter.title}`,
-    description: frontmatter.summary,
+    title: `${title} | Blog by ${author}`,
+    description: summary,
     openGraph: {
-      siteName: `Blog | ${frontmatter.title}`
+      title,
+      description: summary,
+      type: "article",
+      publishedTime: date,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: ""
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: summary,
+      images: [ogImage]
     }
   }
-
-  // if (frontmatter.og_image)
-  //   metadata.openGraph!.images = [
-  //     {
-  //       url: frontmatter.og_image,
-  //       width: 1200,
-  //       height: 630,
-  //       alt: ""
-  //     }
-  //   ]
 
   return metadata
 }
@@ -46,6 +60,29 @@ export default async function Post({
 
   return (
     <article className={styles.blog}>
+      {/* Schema.org JSON-LD for Google Search engine */}
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: Frontmatter.title,
+            datePublished: Frontmatter.date,
+            dateModified: Frontmatter.date,
+            description: Frontmatter.summary,
+            image: Frontmatter.image
+              ? `${process.env.NEXT_PUBLIC_BASE_URL}${Frontmatter.image}`
+              : `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${encodeURIComponent(Frontmatter.title)}`,
+            url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`,
+            author: {
+              "@type": "Person",
+              name: Frontmatter.author
+            }
+          })
+        }}
+      />
       <Breadcrumb
         items={[{ label: "Blog", href: "/blog" }, { label: Frontmatter.title }]}
       />

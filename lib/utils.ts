@@ -20,7 +20,7 @@ export async function getFrontmatter(
 }
 
 // Get all blogs with frontmatter and slug
-export async function getPosts(sortOrder: "asc" | "desc" = "desc"): Promise<
+export async function getPosts(): Promise<
   {
     frontmatter: Frontmatter
     slug: string
@@ -43,13 +43,8 @@ export async function getPosts(sortOrder: "asc" | "desc" = "desc"): Promise<
     throw new Error("Missing frontmatter")
   }
 
-  const sorted = blogs.sort((a, b) => {
-    const dateA = new Date(a.frontmatter.date || "").getTime()
-    const dateB = new Date(b.frontmatter.date || "").getTime()
-    return sortOrder === "asc" ? dateA - dateB : dateB - dateA
-  })
-
-  return sorted
+  new Promise((resolve) => setTimeout(resolve, 3000))
+  return blogs
 }
 
 // Get all slugs
@@ -58,4 +53,16 @@ export async function getSlugs(): Promise<{ slug: string }[]> {
   return files
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => ({ slug: path.parse(file).name }))
+}
+
+// Sort blogs by date
+export function sortBlogsByDate(
+  blogs: Array<{ frontmatter: Frontmatter; slug: string }>,
+  sortOrder: "asc" | "desc"
+): Array<{ frontmatter: Frontmatter; slug: string }> {
+  return blogs.sort((a, b) => {
+    const dateA = new Date(a.frontmatter.date || "").getTime()
+    const dateB = new Date(b.frontmatter.date || "").getTime()
+    return sortOrder === "asc" ? dateA - dateB : dateB - dateA
+  })
 }
