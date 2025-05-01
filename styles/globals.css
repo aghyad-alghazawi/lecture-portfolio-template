@@ -142,7 +142,7 @@ header {
     }
 
     [data-slot="nav-link"]:hover {
-      opacity: 0.4;
+      opacity: 1;
       filter: none;
     }
 

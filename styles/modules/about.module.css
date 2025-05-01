@@ -3,11 +3,11 @@
   display: flex;
   gap: var(--spacing-lg);
   align-items: stretch;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-flow: row wrap;
   border-radius: var(--radius);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
-  /* padding: var(--spacing-lg) calc(var(--spacing-lg) * 3); */
+  padding: var(--spacing-lg) calc(var(--spacing-lg) * 3);
   margin-inline: 30px;
 }
 

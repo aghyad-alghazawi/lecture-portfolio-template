@@ -10,8 +10,8 @@ const Header = () => {
   const navToSection = useNavSection()
 
   const handleNavLinkClick = (href: string) => {
-    navToSection(href)
     setActive(href)
+    navToSection(href)
   }
 
   return (
@@ -23,18 +23,18 @@ const Header = () => {
       </span>
       <nav>
         {NavLinks.map((link) => (
-          <Link
+          <a
             key={link.label}
             href={link.href}
             data-active={active === link.href ? "true" : undefined}
             data-slot="nav-link"
             onClick={(e) => {
-              e.preventDefault()
+              // e.preventDefault()
               handleNavLinkClick(link.href)
             }}
           >
             {link.label}
-          </Link>
+          </a>
         ))}
         <hr
           style={{

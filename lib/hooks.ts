@@ -13,36 +13,38 @@ export function useSectionScroll() {
 
   useEffect(() => {
     const handleScroll = () => {
-      let currentSection = ""
+      const currentPath = pathname
+      let currentHash = window.location.hash
       let minDistance = Number.POSITIVE_INFINITY
       const viewportCenter = window.innerHeight / 2
-      
-      // If not on home page, set active to pathname (e.g. /blog)
-      if (pathname !== "/") {
-        // If on a blog subroute, set active to '/blog' for any /blog or /blog/*
-        if (pathname === "/blog" || pathname.startsWith("/blog/")) {
-          setActive("/blog")
-          return
-        }
-        setActive(pathname)
+
+      // Handle blog page separately
+      if (currentPath.startsWith("/blog")) {
+        setActive("/blog")
         return
       }
 
-      // Check sections on home page
-      NavLinks.forEach((link) => {
-        const id = link.href.replace("#", "")
-        const section = document.getElementById(id)
-        if (section) {
-          const rect = section.getBoundingClientRect()
-          const sectionCenter = rect.top + rect.height / 2
-          const distance = Math.abs(sectionCenter - viewportCenter)
-          if (distance < minDistance) {
-            minDistance = distance
-            currentSection = link.href
+      // Handle home page section navigation
+      if (currentPath === "/") {
+        NavLinks.forEach((link) => {
+          const id = link.href.replace("#", "")
+          const section = document.getElementById(id)
+          if (section) {
+            const rect = section.getBoundingClientRect()
+            const sectionCenter = rect.top + rect.height / 2
+            const distance = Math.abs(sectionCenter - viewportCenter)
+            if (distance < minDistance) {
+              minDistance = distance
+              currentHash = link.href
+            }
           }
+        })
+
+        setActive(currentHash)
+        if (currentHash && window.location.hash !== currentHash) {
+          history.replaceState(null, "", currentHash)
         }
-      })
-      setActive(currentSection)
+      }
     }
 
     document.body.addEventListener("scroll", handleScroll)
@@ -61,45 +63,23 @@ export function useNavSection() {
   const pathname = usePathname()
 
   function navToSection(href: string) {
-    if (pathname.startsWith("/blog")) {
-      // Go to home, then scroll after navigation
-      router.push("/")
-      // Wait for navigation to complete
+    const isHashLink = href.startsWith("#")
+
+    if (pathname.startsWith("/blog") || !pathname.includes("/")) {
+      // Navigate home with the hash directly
+      router.push(`/${isHashLink ? href : ""}`, { scroll: true })
+
+      // Wait for hydration, then scroll manually
       setTimeout(() => {
         const id = href.replace("#", "")
         const el = document.getElementById(id)
-        if (el) {
-          // Scroll to element with a small offset to ensure it's fully visible
-          el.scrollIntoView({ 
-            behavior: "smooth",
-            block: "start",
-            inline: "nearest"
-          })
-        } else {
-          // Try again after a short delay
-          setTimeout(() => {
-            const el2 = document.getElementById(id)
-            if (el2) {
-              el2.scrollIntoView({ 
-                behavior: "smooth",
-                block: "start",
-                inline: "nearest"
-              })
-            }
-          }, 200)
-        }
-      }, 300) // Reduced timeout for faster navigation
+        if (el) el.scrollIntoView({ behavior: "smooth" })
+      }, 100)
     } else {
-      // Already on home, just scroll
+      // Already on home
       const id = href.replace("#", "")
       const el = document.getElementById(id)
-      if (el) {
-        el.scrollIntoView({ 
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest"
-        })
-      }
+      if (el) el.scrollIntoView({ behavior: "smooth" })
     }
   }
 
