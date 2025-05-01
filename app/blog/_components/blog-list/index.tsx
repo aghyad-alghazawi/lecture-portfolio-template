@@ -1,14 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import type { Frontmatter } from "@/lib/types"
+import type { Blog } from "@/lib/types"
 import styles from "@/styles/modules/blog.module.css"
 import { use } from "react"
-
-interface Blog {
-  slug: string
-  frontmatter: Frontmatter
-}
 
 interface BlogListProps {
   blogs: Promise<Blog[]>

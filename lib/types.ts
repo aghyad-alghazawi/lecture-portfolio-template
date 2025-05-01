@@ -18,3 +18,8 @@ export type Frontmatter = {
   summary?: string
   image?: string
 }
+
+export type Blog = {
+  slug: string;
+  frontmatter: Frontmatter;
+}

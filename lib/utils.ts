@@ -1,38 +1,15 @@
 import fs from "node:fs"
 import path from "node:path"
-import type { Frontmatter } from "@/lib/types"
+import type { Frontmatter, Blog } from "@/lib/types"
 
+// Blogs directory containing our markdown files
 const CONTENT_DIR = path.resolve("content")
 
-// Get frontmatter and slug for a single blog post
-export async function getFrontmatter(
-  slug: string
-): Promise<{ frontmatter: Frontmatter; slug: string }> {
-  const mod = await import(`@/content/${slug}.mdx`)
-  if (!mod.meta) {
-    throw new Error(`Missing frontmatter in ${slug}.mdx`)
-  }
-
-  return {
-    frontmatter: mod.meta,
-    slug
-  }
-}
+// Cached blogs
+let cachedBlogs: Promise<Blog[]> | null = null
 
 // Get all blogs with frontmatter and slug
-let cachedBlogs: Promise<
-  {
-    frontmatter: Frontmatter
-    slug: string
-  }[]
-> | null = null
-
-export async function getBlogs(): Promise<
-  {
-    frontmatter: Frontmatter
-    slug: string
-  }[]
-> {
+export async function getBlogs(): Promise<Blog[]> {
   if (cachedBlogs) {
     return cachedBlogs
   }
@@ -47,7 +24,10 @@ export async function getBlogs(): Promise<
         .filter((file) => file.endsWith(".mdx"))
         .map(async (file) => {
           const slug = path.parse(file).name
-          return await getFrontmatter(slug)
+          return {
+            slug,
+            frontmatter: (await getFrontmatter(slug)).frontmatter
+          }
         })
     )
 
@@ -60,6 +40,21 @@ export async function getBlogs(): Promise<
   })()
 
   return cachedBlogs
+}
+
+// Get frontmatter for a single blog post
+export async function getFrontmatter(
+  slug: string
+): Promise<{ frontmatter: Frontmatter }> {
+  const { meta: frontmatter } = await import(`@/content/${slug}.mdx`)
+
+  if (!frontmatter) {
+    throw new Error(`Missing frontmatter in ${slug}.mdx`)
+  }
+
+  return {
+    frontmatter: frontmatter
+  }
 }
 
 // Get all slugs
