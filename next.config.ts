@@ -3,6 +3,7 @@ import createMDX from "@next/mdx"
 
 const nextConfig: NextConfig = {
   experimental: {
+    viewTransition: true,
     mdxRs: true
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],

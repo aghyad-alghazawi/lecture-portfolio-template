@@ -20,31 +20,46 @@ export async function getFrontmatter(
 }
 
 // Get all blogs with frontmatter and slug
-export async function getPosts(): Promise<
+let cachedBlogsPromise: Promise<
+  {
+    frontmatter: Frontmatter
+    slug: string
+  }[]
+> | null = null
+
+export async function getBlogs(): Promise<
   {
     frontmatter: Frontmatter
     slug: string
   }[]
 > {
-  const files = await fs.promises.readdir(CONTENT_DIR)
-
-  if (!files.length) throw new Error("No blogs found")
-
-  const blogs = await Promise.all(
-    files
-      .filter((file) => file.endsWith(".mdx"))
-      .map(async (file) => {
-        const slug = path.parse(file).name
-        return await getFrontmatter(slug)
-      })
-  )
-
-  if (blogs.some((blog) => !blog.frontmatter)) {
-    throw new Error("Missing frontmatter")
+  if (cachedBlogsPromise) {
+    return cachedBlogsPromise
   }
 
-  new Promise((resolve) => setTimeout(resolve, 3000))
-  return blogs
+  cachedBlogsPromise = (async () => {
+    const files = await fs.promises.readdir(CONTENT_DIR)
+
+    if (!files.length) throw new Error("No blogs found")
+
+    const blogs = await Promise.all(
+      files
+        .filter((file) => file.endsWith(".mdx"))
+        .map(async (file) => {
+          const slug = path.parse(file).name
+          return await getFrontmatter(slug)
+        })
+    )
+
+    if (blogs.some((blog) => !blog.frontmatter)) {
+      throw new Error("Missing frontmatter")
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 5000))
+    return blogs
+  })()
+
+  return cachedBlogsPromise
 }
 
 // Get all slugs
@@ -53,16 +68,4 @@ export async function getSlugs(): Promise<{ slug: string }[]> {
   return files
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => ({ slug: path.parse(file).name }))
-}
-
-// Sort blogs by date
-export function sortBlogsByDate(
-  blogs: Array<{ frontmatter: Frontmatter; slug: string }>,
-  sortOrder: "asc" | "desc"
-): Array<{ frontmatter: Frontmatter; slug: string }> {
-  return blogs.sort((a, b) => {
-    const dateA = new Date(a.frontmatter.date || "").getTime()
-    const dateB = new Date(b.frontmatter.date || "").getTime()
-    return sortOrder === "asc" ? dateA - dateB : dateB - dateA
-  })
 }
