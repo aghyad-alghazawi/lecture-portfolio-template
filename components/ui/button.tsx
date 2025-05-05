@@ -1,5 +1,5 @@
-import styles from "@/styles/modules/button.module.css"
 import type React from "react"
+import styles from "@/styles/modules/button.module.css"
 
 interface ButtonProps extends React.ComponentProps<"button"> {
   title: string

@@ -3,19 +3,23 @@ import type { Link, Project } from "@/lib/types"
 export const NavLinks: Link[] = [
   {
     label: "Home",
-    href: "#hero"
+    href: "#hero",
+    icon: "home"
   },
   {
     label: "Projects",
-    href: "#projects"
+    href: "#projects",
+    icon: "backpack"
   },
   {
     label: "About",
-    href: "#about"
+    href: "#about",
+    icon: "info"
   },
   {
     label: "Contact",
-    href: "#contact"
+    href: "#contact",
+    icon: "send"
   }
 ]
 
@@ -74,24 +78,27 @@ export const Info = {
   title: "Your Title",
   description: "A brief description about yourself.",
   email: "your@email",
-  image: "/images/profile.png", 
   bio: "I am a passionate developer with a love for building beautiful and functional web applications. With experience in React, Next.js, and modern web technologies, I enjoy turning ideas into reality.",
   experience: [
     {
       title: "Frontend Developer",
-      details: "3+ years building responsive UIs with React, Next.js, and TypeScript."
+      details:
+        "3+ years building responsive UIs with React, Next.js, and TypeScript."
     },
     {
       title: "UI/UX Designer",
-      details: "Skilled in designing clean, modern interfaces and user experiences."
+      details:
+        "Skilled in designing clean, modern interfaces and user experiences."
     },
     {
       title: "Open Source Contributor",
-      details: "Contributor to several open source projects and active in the dev community."
+      details:
+        "Contributor to several open source projects and active in the dev community."
     },
     {
       title: "Skills",
-      details: "JavaScript, TypeScript, React, Next.js, CSS Modules, Figma, Git, REST APIs"
+      details:
+        "JavaScript, TypeScript, React, Next.js, CSS Modules, Figma, Git, REST APIs"
     }
   ]
 }

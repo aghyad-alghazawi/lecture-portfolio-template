@@ -1,0 +1,70 @@
+.transition {
+  position: absolute;
+  inset: 0;
+  overflow-y: hidden;
+  display: flex;
+  flex-flow: row;
+  pointer-events: none;
+
+  & span {
+    flex: 1;
+    background-color: var(--color-bg);
+    transform: translateY(-100%);
+    animation: slide 2s ease;
+    z-index: 3;
+  }
+
+  & span:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  & span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  & span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  & span:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+
+  & span:nth-child(5) {
+    animation-delay: 0.8s;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-bg);
+    opacity: 0;
+    pointer-events: none;
+    animation: fade 2s ease;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

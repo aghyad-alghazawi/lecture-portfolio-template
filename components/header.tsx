@@ -4,6 +4,15 @@ import Link from "next/link"
 import Image from "next/image"
 import { useSectionScroll, useNavSection } from "@/lib/hooks"
 import { NavLinks } from "@/lib/data"
+import { Home, Backpack, Info, Newspaper, Send } from "lucide-react"
+
+const iconMap: Record<string, React.ReactNode> = {
+  home: <Home />,
+  backpack: <Backpack />,
+  info: <Info />,
+  send: <Send />,
+  newspaper: <Newspaper />
+}
 
 const Header = () => {
   const [active, setActive] = useSectionScroll()
@@ -33,7 +42,8 @@ const Header = () => {
               handleNavLinkClick(link.href)
             }}
           >
-            {link.label}
+            <span data-icon>{link.icon && iconMap[link.icon]}</span>
+            <span data-label>{link.label}</span>
           </a>
         ))}
         <hr
@@ -52,7 +62,8 @@ const Header = () => {
             handleNavLinkClick("/blog")
           }}
         >
-          Blog
+          <span data-icon>{iconMap.newspaper}</span>
+          <span data-label>Blog</span>
         </Link>
       </nav>
     </header>

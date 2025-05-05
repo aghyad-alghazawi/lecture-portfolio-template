@@ -15,7 +15,7 @@ const Card = ({ title, description, thumbnail, url }: CardProps) => {
       <div className={styles.content}>
         <p>{description}</p>
         <a title="View Project" href={url} target="_blank" rel="noreferrer">
-          <Button title="View Project" variant="primary" size="small" />
+          <Button title="View Project" size="small" />
         </a>
       </div>
     </div>

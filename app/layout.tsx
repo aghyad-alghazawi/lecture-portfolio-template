@@ -6,8 +6,8 @@ import type { Metadata } from "next"
 import "@/styles/globals.css"
 
 export const metadata: Metadata = {
-  title: "Aghyad's Portfolio",
-  description: "Our first project",
+  title: "Portfolio",
+  description: "Our first project"
 }
 
 export default function RootLayout({
@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${robotoMono.variable}`}>
+        <div data-background />
         <Header />
         {children}
         <Footer />

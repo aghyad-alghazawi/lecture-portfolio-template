@@ -6,18 +6,31 @@
 .blog-sort {
   display: flex;
   border-radius: var(--radius);
+
   background-color: var(--color-card);
-  border: 2px solid var(--color-muted);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 30px var(--color-card);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+
   overflow: hidden;
   position: relative;
   padding: var(--spacing-sm);
 
   &[data-sort="asc"] {
     --x: calc(0% + var(--spacing-sm));
+
+    & button {
+      color: var(--color-bg);
+    }
   }
 
   &[data-sort="desc"] {
     --x: 50%;
+
+    & button {
+      color: var(--color-bg);
+    }
   }
 
   &::before {
@@ -28,7 +41,7 @@
     left: var(--x);
     width: 40%;
     aspect-ratio: 1;
-    background-color: var(--color-primary);
+    background-color: var(--color-text);
     border-radius: var(--radius);
     transition: all 0.2s ease;
     z-index: 1;
@@ -40,6 +53,7 @@
     gap: var(--spacing-md);
     padding: var(--spacing-sm);
     background-color: transparent;
+    color: var(--color-text);
     border-radius: var(--radius);
     border: none;
     cursor: pointer;
@@ -52,6 +66,7 @@
     & svg {
       size: var(--font-size-sm);
       z-index: 2;
+      color: inherit;
     }
   }
 }

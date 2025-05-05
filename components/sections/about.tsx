@@ -18,14 +18,14 @@ const About = () => (
         </div>
         <div className={styles.action}>
           <a title="Contact Me" href={`mailto:${Info.email}`}>
-            <Button title="Contact Me" variant="primary" size="medium" />
+            <Button title="Contact Me" size="medium" />
           </a>
         </div>
       </div>
       <div className={styles.right}>
         <figure className={styles.avatar}>
           <div className={styles.image}>
-            <Image src={Info.image} alt={Info.name} fill priority />
+            <Image src="/images/profile.svg" alt={Info.name} fill priority />
           </div>
           <figcaption className={styles.bio}>{Info.bio}</figcaption>
         </figure>

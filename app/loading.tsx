@@ -5,9 +5,7 @@ export default function Loading() {
     <main>
       <section>
         <div className={styles["loading-container"]}>
-          <div className={styles["loading-animation"]}>
-            <div className={styles["loading-circle"]} />
-          </div>
+          <div className={styles["shimmer-logo"]} />
         </div>
       </section>
     </main>

@@ -14,7 +14,7 @@
   } */
 
   &[open] {
-    border-color: var(--color-primary);
+    border-color: var(--color-accent);
     box-shadow: none;
   }
 }
@@ -35,13 +35,13 @@
 
   &:hover,
   &:focus-visible {
-    color: var(--color-primary);
+    color: var(--color-accent);
     text-decoration: underline;
     background: none;
   }
   
   &:active {
-    color: var(--color-primary);
+    color: var(--color-accent);
     background: none;
   }
 
@@ -63,7 +63,7 @@
 }
 
 .accordion[open] .summary {
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 

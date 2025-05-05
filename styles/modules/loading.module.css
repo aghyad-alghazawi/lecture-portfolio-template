@@ -5,8 +5,12 @@
   justify-content: center;
   min-height: 100vh;
   padding: var(--spacing-lg);
-  background-color: var(--color-bg);
+  background-color: transparent;
   color: var(--color-text);
+  position: absolute;
+  inset: 0;
+  /* z-index: 99; */
+  /* background-color: var(--color-bg); */
 }
 
 .loading-text {
@@ -15,6 +19,46 @@
   color: var(--color-text);
 }
 
+.shimmer-logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  background-color: var(--color-bg);
+
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0%;
+  animation: shimmer 1.5s infinite ease-in-out;
+
+  -webkit-mask-image: url("/images/logo.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url("/images/logo.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Keep the existing animation styles */
 .loading-animation {
   position: relative;
   width: 100px;
@@ -27,12 +71,16 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: linear-gradient(to right, transparent 50%, var(--color-primary) 50%);
+  background-image: linear-gradient(
+    to right,
+    transparent 50%,
+    var(--color-primary) 50%
+  );
   animation: rotate 2s linear infinite;
 }
 
 .loading-circle::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -66,12 +114,20 @@
   animation: bounce 1.4s infinite ease-in-out;
 }
 
-.loading-dot:nth-child(1) { animation-delay: 0s; }
-.loading-dot:nth-child(2) { animation-delay: 0.2s; }
-.loading-dot:nth-child(3) { animation-delay: 0.4s; }
+.loading-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes bounce {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {

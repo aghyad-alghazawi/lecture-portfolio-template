@@ -2,11 +2,11 @@
   <defs>
     <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ffflurry-grad" gradientTransform="rotate(270)">
       <stop stop-color="#181825" stop-opacity="1" offset="0%"></stop>
-      <stop stop-color="#3b82f6" stop-opacity="1" offset="45%"></stop>
+      <stop stop-color="#000014" stop-opacity="1" offset="45%"></stop>
       <stop stop-color="#1e1e2e" stop-opacity="1" offset="100%"></stop>
     </linearGradient>
   </defs>
-  <rect width="100%" height="100%" fill="#181825"></rect>
+  <rect width="100%" height="100%" fill="currentColor"></rect>
   <g fill="url(#ffflurry-grad)">
     <rect width="528" height="4" x="428" y="708" rx="2" transform="rotate(14, 692, 710)" opacity="0.31"></rect>
     <rect width="779" height="4" x="-274.5" y="119" rx="2" transform="rotate(14, 115, 121)" opacity="0.63"></rect>

@@ -2,7 +2,6 @@ import { Suspense } from "react"
 import { BlogSort } from "./_components/blog-sort"
 import { BlogList } from "./_components/blog-list"
 import { getBlogs } from "@/lib/utils"
-
 import styles from "@/styles/modules/loading.module.css"
 
 export default async function Blog({

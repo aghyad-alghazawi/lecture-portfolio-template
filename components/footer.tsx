@@ -22,7 +22,6 @@ const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="footer-social-link"
         >
           {icon && iconMap[icon]}
         </a>

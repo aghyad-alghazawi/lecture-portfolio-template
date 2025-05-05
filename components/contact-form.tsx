@@ -36,7 +36,7 @@ export function ContactForm() {
         <Label htmlFor="message" size="small">Message</Label>
         <TextArea id="message" name="message" required/>
 
-        <Button type="submit" title={isPending ? "Sending..." : "Send"} variant="primary" size="medium" disabled={isPending} />
+        <Button type="submit" title={isPending ? "Sending..." : "Send"} size="medium" disabled={isPending} />
       </form>
       {state.message && <div>{state.message}</div>}
     </div>

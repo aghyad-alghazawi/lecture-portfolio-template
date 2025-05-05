@@ -12,7 +12,7 @@ interface BlogListProps {
 
 const BlogList = ({ blogs, sortOrder }: BlogListProps) => {
   const resolvedBlogs = use(blogs)
-  
+
   function sortBlogs(blogs: Blog[], sortOrder: "asc" | "desc"): Blog[] {
     return blogs.sort((a, b) => {
       if (

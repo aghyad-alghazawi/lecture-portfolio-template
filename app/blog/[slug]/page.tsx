@@ -1,8 +1,10 @@
-import styles from "@/styles/modules/blog.module.css"
-import { getFrontmatter, getSlugs } from "@/lib/utils"
-import { Breadcrumb } from "@/components/ui/breadcrumb"
 import type { Frontmatter } from "@/lib/types"
 import type { Metadata } from "next"
+
+import { getFrontmatter, getSlugs } from "@/lib/utils"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
+
+import styles from "@/styles/modules/blog.module.css"
 
 export async function generateMetadata({
   params
@@ -10,7 +12,7 @@ export async function generateMetadata({
   const { slug } = await params
   const { frontmatter } = await getFrontmatter(slug)
 
-  const { title, date, summary, author, image } : Frontmatter = frontmatter
+  const { title, date, summary, author, image }: Frontmatter = frontmatter
   const ogImage = image
     ? image
     : `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${encodeURIComponent(title ?? "Blog")}`
@@ -38,7 +40,7 @@ export async function generateMetadata({
       title,
       description: summary,
       images: [ogImage]
-    },
+    }
   }
 
   return metadata
@@ -49,6 +51,8 @@ export default async function Slug({
 }: {
   params: Promise<{ slug: string }>
 }) {
+  // await new Promise((resolve) => setTimeout(resolve, 3000))
+
   const { slug } = await params
   const { default: Post, meta: Frontmatter } = await import(
     `@/content/${slug}.mdx`

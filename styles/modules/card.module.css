@@ -6,8 +6,8 @@
   display: flex;
   flex-flow: column;
   box-shadow: 0 2px 12px 0 rgba(60, 60, 100, 0.06), 0 1px 2px 0
-    var(--color-muted);
-  border: 1px solid var(--color-muted);
+    var(--color-card);
+
   width: 100%;
   /* max-width: 320px; */
   min-width: 220px;
@@ -17,15 +17,15 @@
 
   &:is(:hover, :focus-within) {
     box-shadow: 0 6px 24px 0 rgba(60, 60, 100, 0.16), 0 2px 8px 0
-      var(--color-primary);
+      var(--color-card);
     transform: translateY(-2px) scale(1.02);
-    border-color: var(--color-primary);
+    outline: 2px solid var(--color-text);
   }
 
   & .thumbnail {
     width: 100%;
     height: 180px;
-    
+
     position: relative;
     border-radius: var(--radius) var(--radius) 0 0;
     margin-bottom: 0;
@@ -36,7 +36,7 @@
 
     img {
       object-fit: cover;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16 / 9;
       object-position: center;
       width: 100%;
       height: 100%;
