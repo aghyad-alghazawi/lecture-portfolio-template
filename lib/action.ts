@@ -18,6 +18,28 @@ export async function sendMessage(state: formState, formData: FormData) {
       return { success: false, message: "Please fill in all fields." }
     }
 
+    if (!email.includes("@gmail.com")) {
+      console.log("Invalid email")
+      return { success: false, message: "Please enter a valid email address." }
+    }
+
+    await fetch(process.env.NEXT_PUBLIC_FORM_ENDPOINT!, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, message })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to send message")
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+        return { success: false, message: "Failed to send message" }
+      })
+
     console.log("Contact form submitted:", { name, email, message })
 
     return { success: true, message: "Thank you for contacting us!" }

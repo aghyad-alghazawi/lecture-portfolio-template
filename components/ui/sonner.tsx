@@ -10,7 +10,7 @@ export function Sonner() {
         style: {
           background: "var(--color-card)",
           color: "var(--color-text)",
-          border: "1px solid var(--color-card)"
+          border: "1px solid var(--color-text)"
         }
       }}
     />

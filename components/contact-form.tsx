@@ -10,11 +10,15 @@ import { toast } from "sonner"
 
 const initialState = { success: false, message: "" }
 
-export function ContactForm() {
+const ContactForm = () => {
   const [state, formAction, isPending] = useActionState(
     async (prevState: typeof initialState, formData: FormData) => {
       const result = await sendMessage(prevState, formData)
-      toast(result.message)
+      if (result.success) {
+        toast.success(result.message)
+      } else {
+        toast.error(result.message)
+      }
       return result
     },
     initialState
@@ -26,17 +30,17 @@ export function ContactForm() {
         <Label htmlFor="name" size="small">
           Name
         </Label>
-        <Input id="name" name="name" required uiSize="medium" />
+        <Input id="name" name="name" uiSize="medium" />
 
         <Label htmlFor="email" size="small">
           Email
         </Label>
-        <Input id="email" name="email" type="email" required uiSize="medium" />
+        <Input id="email" name="email" type="email" uiSize="medium" />
 
         <Label htmlFor="message" size="small">
           Message
         </Label>
-        <TextArea id="message" name="message" required />
+        <TextArea id="message" name="message" />
 
         <Button
           type="submit"
@@ -48,3 +52,5 @@ export function ContactForm() {
     </div>
   )
 }
+
+export { ContactForm }

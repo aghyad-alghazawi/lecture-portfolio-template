@@ -1,8 +1,12 @@
-export default function robots() {
+import type { MetadataRoute } from "next"
+
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*"
+        userAgent: "*",
+        allow: "/",
+        disallow: "/test"
       }
     ],
     sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`

@@ -2,7 +2,7 @@
   <defs>
     <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="ffflurry-grad" gradientTransform="rotate(270)">
       <stop stop-color="#181825" stop-opacity="1" offset="0%"></stop>
-      <stop stop-color="#000014" stop-opacity="1" offset="45%"></stop>
+      <stop stop-color="#fff" stop-opacity="1" offset="45%"></stop>
       <stop stop-color="#1e1e2e" stop-opacity="1" offset="100%"></stop>
     </linearGradient>
   </defs>

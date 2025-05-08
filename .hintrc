@@ -1,17 +1,17 @@
 {
-  "extends": ["development"],
+  "extends": [
+    "development"
+  ],
   "hints": {
     "compat-api/css": [
       "default",
       {
         "ignore": [
-          "text-wrap",
-          "text-wrap: balance",
-          "text-wrap: pretty",
           "animation-timeline",
           "animation-timeline: view()",
           "animation-range",
-          "animation-timeline: scroll()"
+          "animation-timeline: scroll()",
+          "text-wrap: pretty"
         ]
       }
     ],
