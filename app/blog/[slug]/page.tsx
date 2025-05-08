@@ -1,8 +1,8 @@
 import type { Frontmatter } from "@/lib/types"
 import type { Metadata } from "next"
 
-import { getFrontmatter, getSlugs } from "@/lib/utils"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
+import { getFrontmatter, getSlugs } from "@/lib/utils"
 
 import styles from "@/styles/modules/blog.module.css"
 

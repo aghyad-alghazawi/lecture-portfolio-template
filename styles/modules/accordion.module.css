@@ -39,7 +39,7 @@
     text-decoration: underline;
     background: none;
   }
-  
+
   &:active {
     color: var(--color-accent);
     background: none;
@@ -65,7 +65,6 @@
 .accordion[open] .summary {
   color: var(--color-accent);
 }
-
 
 .content {
   padding: var(--spacing-md) 0 var(--spacing-sm) 0;

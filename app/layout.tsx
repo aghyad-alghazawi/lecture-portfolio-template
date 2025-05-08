@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { Sonner } from "@/components/ui/sonner"
 import { roboto, robotoMono } from "@/lib/fonts"
 import type { Metadata } from "next"
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Sonner />
       </body>
     </html>
   )

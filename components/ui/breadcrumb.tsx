@@ -1,5 +1,5 @@
-import Link from "next/link"
 import styles from "@/styles/modules/breadcrumb.module.css"
+import Link from "next/link"
 
 export interface BreadcrumbItem {
   label: string

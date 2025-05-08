@@ -14,6 +14,7 @@ export async function sendMessage(state: formState, formData: FormData) {
     const message = formData.get("message") as string
 
     if (!name || !email || !message) {
+      console.log("Validation failed")
       return { success: false, message: "Please fill in all fields." }
     }
 
@@ -26,8 +27,7 @@ export async function sendMessage(state: formState, formData: FormData) {
       message:
         (error as Error)?.message ?? "Something went wrong. Please try again."
     }
-  }
-  finally {
+  } finally {
     revalidatePath("/")
   }
 }

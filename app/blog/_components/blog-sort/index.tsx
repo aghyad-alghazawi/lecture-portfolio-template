@@ -1,7 +1,7 @@
 "use client"
 
+import { ChevronDown, ChevronUp } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronUp, ChevronDown } from "lucide-react"
 import styles from "./index.module.css"
 
 const BlogSort = () => {

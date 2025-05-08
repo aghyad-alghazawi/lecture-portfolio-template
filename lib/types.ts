@@ -20,6 +20,6 @@ export type Frontmatter = {
 }
 
 export type Blog = {
-  slug: string;
-  frontmatter: Frontmatter;
+  slug: string
+  frontmatter: Frontmatter
 }

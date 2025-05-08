@@ -20,15 +20,23 @@
   &[data-sort="asc"] {
     --x: calc(0% + var(--spacing-sm));
 
-    & button {
+    & button:first-child {
       color: var(--color-bg);
+    }
+
+    & button:last-child {
+      color: var(--color-text);
     }
   }
 
   &[data-sort="desc"] {
     --x: 50%;
 
-    & button {
+    & button:first-child {
+      color: var(--color-text);
+    }
+
+    & button:last-child {
       color: var(--color-bg);
     }
   }
@@ -36,10 +44,11 @@
   &::before {
     content: "";
     position: absolute;
+    display: flex;
     inset: 0;
     margin: auto 0;
     left: var(--x);
-    width: 40%;
+    width: 42%;
     aspect-ratio: 1;
     background-color: var(--color-text);
     border-radius: var(--radius);
@@ -60,7 +69,7 @@
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: var(--color-muted);
+      background-color: var(--color-secondary);
     }
 
     & svg {

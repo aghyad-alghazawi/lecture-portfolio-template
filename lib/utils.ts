@@ -1,6 +1,6 @@
 import fs from "node:fs"
 import path from "node:path"
-import type { Frontmatter, Blog } from "@/lib/types"
+import type { Blog, Frontmatter } from "@/lib/types"
 
 // Blogs directory containing our markdown files
 const CONTENT_DIR = path.resolve("content")

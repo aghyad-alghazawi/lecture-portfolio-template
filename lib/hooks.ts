@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
 import { NavLinks } from "@/lib/data"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 /**
  * Custom hook to track the currently active section based on scroll position.

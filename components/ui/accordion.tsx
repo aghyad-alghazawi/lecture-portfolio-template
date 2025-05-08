@@ -1,5 +1,5 @@
-import type { ReactNode } from "react"
 import styles from "@/styles/modules/accordion.module.css"
+import type { ReactNode } from "react"
 
 interface AccordionProps {
   title: string

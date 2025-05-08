@@ -1,8 +1,8 @@
 "use client"
 
-import Link from "next/link"
 import type { Blog } from "@/lib/types"
 import styles from "@/styles/modules/blog.module.css"
+import Link from "next/link"
 import { use } from "react"
 
 interface BlogListProps {

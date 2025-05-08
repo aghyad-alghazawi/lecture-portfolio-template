@@ -1,8 +1,8 @@
-import { Suspense } from "react"
-import { BlogSort } from "./_components/blog-sort"
-import { BlogList } from "./_components/blog-list"
 import { getBlogs } from "@/lib/utils"
 import styles from "@/styles/modules/loading.module.css"
+import { Suspense } from "react"
+import { BlogList } from "./_components/blog-list"
+import { BlogSort } from "./_components/blog-sort"
 
 export default async function Blog({
   searchParams
@@ -33,7 +33,7 @@ export default async function Blog({
           alignItems: "center",
           marginBottom: "1rem",
           width: "100%",
-          maxWidth: "40vw"
+          maxWidth: "50vw"
         }}
       >
         <h1>Blogs</h1>

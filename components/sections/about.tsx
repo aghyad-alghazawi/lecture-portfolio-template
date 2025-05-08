@@ -1,8 +1,8 @@
-import Image from "next/image"
-import styles from "@/styles/modules/about.module.css"
-import { Info } from "@/lib/data"
-import { Button } from "@/components/ui/button"
 import { Accordion } from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Info } from "@/lib/data"
+import styles from "@/styles/modules/about.module.css"
+import Image from "next/image"
 
 const About = () => (
   <section id="about">

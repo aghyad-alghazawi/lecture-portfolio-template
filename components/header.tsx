@@ -1,10 +1,10 @@
 "use client"
 
-import Link from "next/link"
-import Image from "next/image"
-import { useSectionScroll, useNavSection } from "@/lib/hooks"
 import { NavLinks } from "@/lib/data"
-import { Home, Backpack, Info, Newspaper, Send } from "lucide-react"
+import { useNavSection, useSectionScroll } from "@/lib/hooks"
+import { Backpack, Home, Info, Newspaper, Send } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 const iconMap: Record<string, React.ReactNode> = {
   home: <Home />,
